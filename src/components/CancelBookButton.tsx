@@ -1,3 +1,4 @@
+
 "use client";
 
 import { AlertDialog, Button } from "@heroui/react";
@@ -12,19 +13,22 @@ const CancelBookButton = ({ bookId }: CancelBookButtonProps) => {
   const router = useRouter();
 
   const handleDeleteBooking = async () => {
+    if (!bookId) {
+      return;
+    }
+
     const data = await deleteSeletedRoom(bookId);
 
-    router.refresh();
-
     if (data?.bookCount) {
+      router.refresh();
+    } else {
+      router.refresh();
     }
   };
 
   return (
     <AlertDialog>
-      <Button size="sm">
-        Cancel
-      </Button>
+      <Button size="sm">Cancel</Button>
 
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
@@ -54,7 +58,6 @@ const CancelBookButton = ({ bookId }: CancelBookButtonProps) => {
               <Button
                 onPress={handleDeleteBooking}
                 slot="close"
-                
                 className="font-bold"
               >
                 Yes, Cancel
