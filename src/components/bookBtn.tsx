@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -24,12 +25,6 @@ export default function BookButton({ room }: BookButtonProps) {
   const { data: session } = useSession();
 
   const handleBooking = async () => {
-    const { data: jwtData } = await authClient.token();
-    const token = jwtData?.token;
-
-    if (!token) {
-      return;
-    }
 
     const updatedData = {
       status: room?.status,
@@ -46,7 +41,6 @@ export default function BookButton({ room }: BookButtonProps) {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(updatedData),
       }
