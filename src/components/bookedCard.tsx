@@ -1,8 +1,10 @@
+
 import Image from "next/image";
 import { Chip } from "@heroui/react";
 import CancelBookButton from "./CancelBookButton";
 
 type Book = {
+  _id: string;
   room_image_url: string;
   room_name: string;
   bookAt: string | Date;
@@ -17,7 +19,7 @@ const BookedCard = ({ book }: BookedCardProps) => {
     <div className="flex gap-4 p-4 bg-white border rounded-xl">
       <Image
         src={book.room_image_url}
-        alt="course"
+        alt={book.room_name}
         width={120}
         height={90}
         className="rounded-lg"
@@ -37,7 +39,7 @@ const BookedCard = ({ book }: BookedCardProps) => {
             Active
           </Chip>
 
-          <CancelBookButton />
+          <CancelBookButton bookId={book._id} />
         </div>
       </div>
     </div>
