@@ -22,7 +22,7 @@ const CancelBookButton = ({ bookId }: CancelBookButtonProps) => {
 
   return (
     <AlertDialog>
-      <Button color="danger" variant="light" size="sm">
+      <Button size="sm">
         Cancel
       </Button>
 
@@ -54,7 +54,7 @@ const CancelBookButton = ({ bookId }: CancelBookButtonProps) => {
               <Button
                 onPress={handleDeleteBooking}
                 slot="close"
-                color="danger"
+                
                 className="font-bold"
               >
                 Yes, Cancel
